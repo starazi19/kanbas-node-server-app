@@ -11,17 +11,21 @@ function CourseRoutes(app) {
       res.send(course);
     });
     app.put("/api/courses/:id", (req, res) => {
+      console.log("PUT COURSE",req.body);
       const { id } = req.params;
       const course = req.body;
       Database.courses = Database.courses.map((c) =>
         c._id === id ? { ...c, ...course } : c
       );
-      res.sendStatus(204);
+      console.log("PUT COURSE",Database.courses);
+      res.send(course);
     });
     app.delete("/api/courses/:id", (req, res) => {
+      // console.log("DELETE COURSE",req.body)
       const { id } = req.params;
       Database.courses = Database.courses
         .filter((c) => c._id !== id);
+        // console.log("DELETE COURSE",Database.courses)
       res.sendStatus(204);
     });
     app.post("/api/courses", (req, res) => {
