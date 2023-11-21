@@ -11,13 +11,13 @@ function CourseRoutes(app) {
       res.send(course);
     });
     app.put("/api/courses/:id", (req, res) => {
-      console.log("PUT COURSE",req.body);
+      // console.log("PUT COURSE",req.body);
       const { id } = req.params;
       const course = req.body;
       Database.courses = Database.courses.map((c) =>
         c._id === id ? { ...c, ...course } : c
       );
-      console.log("PUT COURSE",Database.courses);
+      // console.log("PUT COURSE",Database.courses);
       res.send(course);
     });
     app.delete("/api/courses/:id", (req, res) => {
